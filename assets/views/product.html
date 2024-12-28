@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pricey</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      /* Remove the navbar's default rounded borders and increase the bottom margin */
+      .navbar {
+        margin-bottom: 50px;
+        border-radius: 0;
+      }
+
+      /* Remove the jumbotron's default bottom margin */
+      .jumbotron {
+        margin-bottom: 0;
+      }
+
+      /* Add a gray background color and some padding to the footer */
+      footer {
+        background-color: #f2f2f2;
+        padding: 25px;
+      }
+      /*ovadje je dodano*/
+      .panel-heading,
+      .panel-footer {
+        height: 50px; /* Adjust this value as needed */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .content-section {
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping for rows of 3 */
+      }
+      .content-section .col-sm-4 {
+        display: flex;
+        flex-direction: column;
+      }
+      .panel-heading {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      /*do ovdje*/
+
+      .panel-body {
+        padding: 0; /* Remove padding around the image */
+        height: 200px; /* Set a fixed height for the panel (adjust as needed) */
+        overflow: hidden; /* Hide any overflow content */
+      }
+
+      .panel-body img {
+        width: 100%; /* Ensure the image takes up the full width */
+        height: 100%; /* Ensure the image takes up the full height */
+        object-fit: contain; /* Make the image resize to fit the panel while maintaining aspect ratio */
+      }
+
+      /*HighCharts*/
+      .highcharts-figure,
+      .highcharts-data-table table {
+        min-width: 360px;
+        max-width: 800px;
+        margin: 1em auto;
+      }
+
+      .highcharts-data-table table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #ebebeb;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+      }
+
+      .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+      }
+
+      .highcharts-data-table td,
+      .highcharts-data-table th,
+      .highcharts-data-table caption {
+        padding: 0.5em;
+      }
+
+      .highcharts-data-table thead tr,
+      .highcharts-data-table tr:nth-child(even) {
+        background: #f8f8f8;
+      }
+
+      .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+      }
+
+      .highcharts-description {
+        margin: 0.3rem 10px;
+      }
+
+      /**/
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="Home.html">Pricey</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="Home.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="#">Deals</a></li>
+            <li><a href="#">Stores</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#"
+                ><span class="glyphicon glyphicon-user"></span> Your Account</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <figure class="highcharts-figure">
+      <div id="container"></div>
+      <p class="highcharts-description">
+        Basic line chart showing trends in a dataset. This chart includes the
+        <code>series-label</code> module, which adds a label to each line for
+        enhanced readability.
+      </p>
+    </figure>
+
+    <div class="container">
+      <div class="row content-section"></div>
+    </div>
+    <br />
+  </body>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/products_service.js"></script>
+  <script src="../js/filter.js"></script>
+  <script src="../js/HighCharts.js"></script>
+  <script>
+    window.onload = function () {
+      let productID = localStorage.getItem("product_id"); // Retrieve dynamically if needed
+      let websiteID = localStorage.getItem("website_id"); // Retrieve dynamically if needed
+      ProductService.GetProductsDetailsByProductID(productID, websiteID);
+    };
+  </script>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pricey</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      .navbar {
+        margin-bottom: 50px;
+        border-radius: 0;
+      }
+
+      .jumbotron {
+        margin-bottom: 0;
+      }
+
+      .filter-section {
+        height: 100vh;
+        border-right: 1px solid #ccc;
+        padding: 15px;
+        padding-left: 70px;
+      }
+
+      .content-section {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .item-panel {
+        margin: 15px;
+        width: 300px;
+      }
+
+      footer {
+        background-color: #f2f2f2;
+        padding: 25px;
+      }
+      .panel-body {
+        padding: 0; /* Remove padding around the image */
+        height: 200px; /* Set a fixed height for the panel (adjust as needed) */
+        overflow: hidden; /* Hide any overflow content */
+      }
+
+      .panel-body img {
+        width: 100%; /* Ensure the image takes up the full width */
+        height: 100%; /* Ensure the image takes up the full height */
+        object-fit: contain; /* Make the image resize to fit the panel while maintaining aspect ratio */
+      }
+      /*ovadje je dodano*/
+      .panel-heading,
+      .panel-footer {
+        height: 50px; /* Adjust this value as needed */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .content-section {
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping for rows of 3 */
+      }
+      .content-section .col-sm-4 {
+        display: flex;
+        flex-direction: column;
+      }
+      .panel-heading {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      /*do ovdje*/
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="Home.html">Pricey</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="Home.html">Home</a></li>
+            <li class="active"><a href="products.html">Products</a></li>
+            <li><a href="#">Deals</a></li>
+            <li><a href="#">Stores</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#"
+                ><span class="glyphicon glyphicon-user"></span> Your Account</a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Reduced column width -->
+        <div class="col-sm-2 filter-section">
+          <h4>Filter By:</h4>
+          <hr />
+          <h5>Websites</h5>
+          <div class="websites"></div>
+
+          <hr />
+          <h5>Products</h5>
+
+          <div class="products"></div>
+
+          <button
+            type="button"
+            class="btn"
+            id="filterButton"
+            style="margin-top: 20px; width: 100%"
+          >
+            Filter
+          </button>
+        </div>
+        <div class="col-sm-10 content-section"></div>
+      </div>
+    </div>
+
+    <footer class="container-fluid text-center">
+      <p>Online Store Copyright</p>
+      <form class="form-inline">
+        Get deals:
+        <input
+          type="email"
+          class="form-control"
+          size="50"
+          placeholder="Email Address"
+        />
+        <button type="button" class="btn btn-danger">Sign Up</button>
+      </form>
+    </footer>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/products_service.js"></script>
+  <script src="../js/filter.js"></script>
+  <script>
+    ProductService.getProducts();
+    ProductService.getAllProductsDetails();
+  </script>
+</html>
